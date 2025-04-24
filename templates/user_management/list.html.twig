@@ -1,0 +1,164 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserManagementController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <div>
+        <a href="{{path('app_user_management')}}" class="btn btn-primary">Create User</a>
+    </div>
+    <div class="d-flex justity-content-start mb-5">
+        <div>
+            <select id="frole" class="form-control">
+                <option disabled selected>Select Role</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+                <option value="manager">Manager</option>
+            </select>
+        </div>
+
+        <div>
+            <select id="fstatus" class="form-control">
+                <option disabled selected>Select Status</option>
+                <option value="1">Active</option>
+                <option value="0">In-Active</option>                
+            </select>
+        </div>
+
+        <div>
+            <input id="fdates" class="form-control" name="dates">
+        </div>
+
+        <div class="mx-2">
+            <button id="filter" class="btn btn-primary">Filter</button>
+            <button id="clearAll" class="btn btn-secondary">Clear</button>
+        </div>
+    </div>
+    <div class="form">
+        <table class="table striped" id="userManagementTable">
+             <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>Hobbies</th>
+                    <th>Gender</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {# Datatable Ajax #}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+
+
+            var start = moment().startOf('month');
+            var end = moment();
+            $('#fdates').daterangepicker({
+                startDate: start,
+                endDate: end,
+                opens : 'left',
+                locale: {
+                    format: 'DD/MM/YYYY'
+                }
+            });
+
+            //Fetching List
+            $("#userManagementTable").DataTable({
+                'columnDefs': [
+                    { "data": "id",   "targets": 0},
+                    { "data": "first_name",   "targets": 1},
+                    { "data": "last_name",   "targets": 2},
+                    { "data": "email",  "targets": 3},
+                    { "data": "age",  "targets": 4},
+                    { "data": "hobby",  "targets": 5},
+                    { "data": "gender",  "targets": 6},
+                    { "data": "role",  "targets": 7},
+                    { "data": "status",  "targets": 8},
+                    { "data": "edit",  "targets": 9},
+                    { "data": "delete",  "targets": 10},
+                ],
+                "processing": true,
+                "serverSide": true,
+                "ajax": {
+                    "url": "{{path('user_list')}}",
+                    "type": "POST",
+                    dataSrc: "data",
+                    "data" : function(d) {
+                        d.role = $("#frole").val();
+                        d.status = $('#fstatus').val();
+                        d.date = $('#fdates').val();
+                    }
+                },
+
+                "paging" : true,
+                "info" : true,
+                "searching": true,
+                "pageLength": 10,
+            });
+
+            $("#filter").on('click', function(){
+                $("#userManagementTable").DataTable().ajax.reload();
+            });          
+
+            $("#clearAll").on('click', function(){
+                $("#frole").prop('selectedIndex', 0);
+                $("#fstatus").prop('selectedIndex', 0);
+
+                $("#fdates").data('daterangepicker').setStartDate(start);
+                $("#fdates").data('daterangepicker').setEndDate(end);
+                $("#userManagementTable").DataTable().ajax.reload();
+            })
+
+            //Delete Record
+            $("#userManagementTable").on('click', '.user_delete', function(){
+                var id = $(this).data('id');
+                console.log(id);
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Are you sure ?',
+                    text: 'You want to delete this record ?',
+                    showConfirmButton: true,
+                    showCancelButton: true,
+                    cancelButtonText: 'No'
+                }).then((result) => {
+                    if(result.isConfirmed) 
+                    {
+                        $.ajax({
+                            url: "{{path('user_delete')}}",
+                            method: "POST",
+                            data: {
+                                "id": id
+                            },
+                            success: function(res) {
+                                console.log(res);
+                                $("#userManagementTable").DataTable().ajax.reload();
+                            },
+                            error: function(res) {
+                                console.log()
+                            }
+                        })
+                    }
+                })
+            })
+        });
+    </script>
+{% endblock %}
+
