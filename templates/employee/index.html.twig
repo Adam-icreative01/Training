@@ -1,0 +1,151 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EmployeeController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+{# Navbar #}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            {# <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>                         #}
+        </ul>
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        </div>
+    </div>
+</nav> 
+    
+<div class="fluid-container">
+    <div class="example-wrapper">
+        <div class="d-flex justify-content-end">
+            <a href="{{ path('employee_list') }}" class="btn btn-sm btn-primary">Show List</a>
+        </div>
+    
+    {% form_theme form 'bootstrap_5_layout.html.twig' %}
+    {{ form_start(form) }}
+    <div class="row mb-3">
+        <div class="col">
+            {{ form_row(form.first_name) }}
+        </div>
+        <div class="col">
+            {{ form_row(form.last_name) }}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+            {{ form_row(form.age) }}
+        </div>
+        <div class="col">
+            {{ form_row(form.about_me) }}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+            {{ form_row(form.gender) }}
+        </div>
+        <div class="col">
+            {{ form_row(form.Hobby) }}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+            {{ form_row(form.salary) }}
+        </div>
+        <div class="col">
+            {{ form_row(form.city) }}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+            {{ form_row(form.roles) }}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+            {{ form_row(form.profile_image_file) }}
+        </div>
+            {# {% if employee.profileImageFile %}
+                <div class="col">  
+                    <h6>Current Profile Image </h6>             
+                    <img src="{{ asset('/uploads/' ~ employee.profileImage) }}" height="100">
+                </div>
+            {% endif %} #}
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+            {{ form_row(form.save) }}
+        </div>
+    </div>
+{{ form_end(form) }}
+
+    </div>
+</div>
+{% endblock %}
+
+
+{% block javascripts %}
+    <script>
+            
+        $(document).ready(function(){
+            const $fileInput = $('#employee_profile_image_file');
+            const $newPreview = $('<img>', {
+                id: 'newImagePreview',
+                css: {
+                    maxWidth: '150px',
+                    marginTop: '10px',
+                    display: 'none'
+                }
+            });
+
+
+            $fileInput.after($newPreview);
+
+            $fileInput.on('change', function (e) {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $newPreview.attr('src', e.target.result).show();
+                    };
+
+                    reader.readAsDataURL(file);
+                } else {
+                    $newPreview.hide();
+                }
+            });
+
+
+            $('#employee_age, #employee_salary').on('input', function () {
+                this.value = this.value.replace(/[^0-9.]/g, '');
+
+                if (this.id === 'employee_age') {
+                    this.value = this.value.replace(/\..*$/, ''); // Remove decimal if age
+                }
+            });
+        });
+    </script>
+{% endblock %}

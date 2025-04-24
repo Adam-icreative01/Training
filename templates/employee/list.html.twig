@@ -1,0 +1,197 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EmployeeController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+{# Navbar #}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            {# <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>                         #}
+        </ul>
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        </div>
+    </div>
+</nav> 
+    
+<div class="fluid-container">
+    <div class="example-wrapper">
+        <div class="d-flex justify-content-end">
+            <a href="{{ path('employee') }}" class="btn btn-primary text-center btn-sm">Add new Employee</a>
+        </div>
+    {# Filters #}
+        <div class="d-flex">   
+            <input type="number" id="salaryInput" placeholder="Enter salary" class="form-control d-inline w-25">
+
+            <select id="comparisonSelect" class="form-control d-inline w-25">
+                <option value="" disabled selected>Select Operator</option>
+                <option value="=">Equal to =</option>
+                <option value=">">Greater than &gt;</option>
+                <option value="<">Less Than &lt;</option>
+                <option value="<=">Less Than AND Equal to &lt;=</option>
+                <option value=">=">Greater Than AND Equal to &gt;=</option>
+            </select>
+
+            <button id="filterButton" class="btn btn-primary" style="margin: 0 5px 0 5px;">Filter</button>
+            <button id="clearButton" class="btn btn-info text-white" style="margin: 0 5px 0 5px;">Clear</button>
+        </div>
+
+    {# {{ dd(employee) }} #}
+
+        <div class="table">
+            <table class="table" id="employee_table">
+                <thead>
+                    <tr>
+                        <td>Sr.No</td>
+                        <td>First Name</td>
+                        <td>Last Name</td>
+                        <td>Age</td>
+                        <td>Hobbies</td>
+                        <td>Salary</td>
+                        <td>Role</td>
+                        <td>Image</td>
+                        <td>Edit</td>
+                        <td>Delete</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {# {% for i in employee %}
+                        <tr>
+                            <td>1.</td>
+                            <td>{{i.firstName}}</td>
+                            <td>{{i.lastName}}</td>
+                            <td>{{i.age}}</td>
+                            <td>
+                                {% for j in i.hobby %}
+                                   {{j}}  
+                                {% endfor %}
+                            </td>
+                            <td>{{i.salary}}</td>
+                            <td>{{i.roles}}</td>
+                            <td><image src="{{ asset('/uploads/' ~ i.profileImage) }}" width="150" height="100"/></td>
+                            <td>
+                                <a href="{{ path('employee_edit', {'id' : i.id}) }}" class="btn btn-primary btn-sm">Edit</a>
+                                <button href="#" data-id="{{i.id}}" class="btn btn-danger btn-sm employee_delete">Delete</button>
+                            </td>
+                        </tr>
+                    {% endfor %} #}
+                </tbody>
+            </table>  
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+
+            //DataTable
+            $('#employee_table').DataTable({
+                'columnDefs' : [
+                    {"data": "id" , "targets": 0},
+                    {"data": "first_name" , "targets": 1},
+                    {"data": "last_name" , "targets": 2},
+                    {"data": "age" , "targets": 3},
+                    {"data": "hobbies" , "targets": 4},
+                    {"data": "salary" , "targets": 5, searchable: true, orderable: true},
+                    {"data": "role" , "targets": 6},
+                    {"data": "profile_image" , "targets": 7},
+                    {"data": "edit" , "targets": 8},
+                    {"data": "delete" , "targets": 9},                    
+                ],
+
+                "processing" : true,
+                "serverSide" : true,
+                "ajax" : {
+                    "url" : '{{ path('employee') }}',
+                    "type" : "POST",
+                    dataSrc : "data",
+                    data: function(d) {
+                        d.salary = $('#salaryInput').val();
+                        d.comparison = $('#comparisonSelect').val();
+                    }
+                },
+
+                "paging" : true,
+                "info" : true,
+                "searching": true,
+                "pageLength": 10,
+                "order": [[4, 'asc']],
+            });
+
+
+            $('#filterButton').on('click', function () {
+                $("#employee_table").DataTable().ajax.reload();
+            });
+
+            $("#clearButton").on('click', function(){
+                $("#salaryInput").val('');
+                $("#comparisonSelect").val('')
+            })
+
+            // Delete Ajax Call
+            $("#employee_table").on('click', '.employee_delete', function(e){
+                e.preventDefault();
+                
+                var id = $(this).data('id'); 
+                
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Are you sure ?',
+                    text: 'You want to delete this record ?',
+                    showConfirmButton: true,
+                    showCancleButton: true,
+                    confirmButtonText: 'Yes',
+                    cancleButtonText: 'No',
+                }).then((result) => {
+                    if(result.isConfirmed)
+                    {
+                        $.ajax({
+                            url: '{{ path('employee_delete') }}',                    
+                            method: 'POST',
+                            data: {                        
+                                id,
+                            },
+                            success: function() {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success',
+                                    text: 'Record Deleted Successfully',
+                                });
+
+                                $("#employee_table").DataTable().ajax.reload();
+                            },
+                            error: function() {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error !',
+                                    text: 'Something wrong happened !'
+                                });
+                            }
+                        });
+                    }
+                })
+            })
+        });
+    </script>
+{% endblock %}
