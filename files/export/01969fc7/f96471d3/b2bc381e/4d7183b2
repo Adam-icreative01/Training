@@ -1,0 +1,13 @@
+id;color_hex_code;name;position;group_id;group_display_type;group_sorting_type;group_name;group_description;group_position;media_id;media_url;media_folder_id;media_type;media_title;media_alt
+01969ef5371373daa161ecdd5455ae95;;Red;1;01969ef4d48f72ecb3a71a98ced1338e;text;alphanumeric;Color;"Defines the different colors of the product.";1;;;;;;
+01969ef567227ea9860510028aeba282;;Blue;2;01969ef4d48f72ecb3a71a98ced1338e;text;alphanumeric;Color;"Defines the different colors of the product.";1;;;;;;
+01969ef5881a7bf2bd0c1e9953acedfa;;Green;3;01969ef4d48f72ecb3a71a98ced1338e;text;alphanumeric;Color;"Defines the different colors of the product.";1;;;;;;
+01969ef5af397586b6bb714c26c27348;;White;4;01969ef4d48f72ecb3a71a98ced1338e;text;alphanumeric;Color;"Defines the different colors of the product.";1;;;;;;
+01969ef5ce747293ade32d44f2aee6eb;;Black;5;01969ef4d48f72ecb3a71a98ced1338e;text;alphanumeric;Color;"Defines the different colors of the product.";1;;;;;;
+01969ef6bebd722aafc3fa335e8c7411;;UK5;1;01969ef60eb97316a7c2139d86e4d14f;text;alphanumeric;"Shoe Size";"Defines the unique shoe sizes as per the UK (UK5, UK6)";1;;;;;;
+01969ef6dc46742d927b0a8175e97d01;;UK6;2;01969ef60eb97316a7c2139d86e4d14f;text;alphanumeric;"Shoe Size";"Defines the unique shoe sizes as per the UK (UK5, UK6)";1;;;;;;
+01969ef6f97f797484ed811bc884994c;;UK7;3;01969ef60eb97316a7c2139d86e4d14f;text;alphanumeric;"Shoe Size";"Defines the unique shoe sizes as per the UK (UK5, UK6)";1;;;;;;
+01969ef72e6f7c54a4b69e3af78ed091;;UK8;4;01969ef60eb97316a7c2139d86e4d14f;text;alphanumeric;"Shoe Size";"Defines the unique shoe sizes as per the UK (UK5, UK6)";1;;;;;;
+01969ef74e7e780aac0c4eb97ca3d149;;UK9;5;01969ef60eb97316a7c2139d86e4d14f;text;alphanumeric;"Shoe Size";"Defines the unique shoe sizes as per the UK (UK5, UK6)";1;;;;;;
+01969ef76edf780f811d0cde0bb8887c;;UK10;6;01969ef60eb97316a7c2139d86e4d14f;text;alphanumeric;"Shoe Size";"Defines the unique shoe sizes as per the UK (UK5, UK6)";1;;;;;;
+01969f1491c6707b83dea2ae02b6b03b;;Brown;6;01969ef4d48f72ecb3a71a98ced1338e;text;alphanumeric;Color;"Defines the different colors of the product.";1;;;;;;

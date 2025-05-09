@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/trunk/src/Core/Framework/App/Manifest/Schema/manifest-2.0.xsd">
+    <meta>
+        <name>SwagInsiderPreviews</name>
+        <label>Insider Previews</label>
+        <description>This app shows the insider preview in admin</description>
+        <author>shopware AG</author>
+        <copyright>(c) shopware AG</copyright>
+        <version>6.6.0.0</version>
+        <license>MIT</license>
+        <icon>icon.png</icon>
+    </meta>
+
+    <setup>
+        <registrationUrl>https://swaginsiderpreview.apps.shopware.io/api/lifecycle/register</registrationUrl>
+        <secret>MySecret</secret>
+    </setup>
+
+    <admin>
+        <base-app-url>https://swaginsiderpreview.apps.shopware.io/v6.6.0.1/</base-app-url>
+    </admin>
+
+    <webhooks>
+        <webhook name="appActivated" url="https://swaginsiderpreview.apps.shopware.io/api/lifecycle/activate" event="app.activated"/>
+        <webhook name="shopwareUpdated" url="https://swaginsiderpreview.apps.shopware.io/service/lifecycle/report-update" event="shopware.updated"/>
+        <webhook name="appUpdated" url="https://swaginsiderpreview.apps.shopware.io/service/lifecycle/service-update-finished" event="app.updated"/>
+        <webhook name="appDeactivated" url="https://swaginsiderpreview.apps.shopware.io/api/lifecycle/deactivate" event="app.deactivated"/>
+        <webhook name="appDelete" url="https://swaginsiderpreview.apps.shopware.io/api/lifecycle/delete" event="app.deleted"/>
+    </webhooks>
+
+    <permissions>
+        <read>system_config</read>
+        <permission>api_feature_flag_toggle</permission>
+        <read>user_config</read>
+        <create>user_config</create>
+        <update>user_config</update>
+        <read>user</read>
+    </permissions>
+</manifest>
