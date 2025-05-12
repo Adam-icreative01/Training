@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="Task\Core\Content\Swag\SwagDefinition">
+            <tag name="shopware.entity.definition" entity="swag" />
+        </service>
+
+        <service id="Task\Core\Content\Swag\Aggregate\TaskTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="task_translation" />
+        </service>
+
+    </services>
+</container>

@@ -2,7 +2,7 @@
     "name": "basic-example/swag-basic-example",
     "description": "basic-example/swag-basic-example",
     "type": "shopware-platform-plugin",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "license": "MIT",
     "authors": [
         {
