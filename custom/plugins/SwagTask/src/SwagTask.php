@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Task;
+namespace SwagTask;
 
 use Shopware\Core\Framework\Plugin;
 use Shopware\Core\Framework\Plugin\Context\ActivateContext;

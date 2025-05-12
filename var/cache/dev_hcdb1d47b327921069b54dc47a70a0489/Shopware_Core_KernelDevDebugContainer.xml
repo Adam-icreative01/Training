@@ -138,18 +138,18 @@
     </parameter>
     <parameter key="kernel.plugin_infos" type="collection">
       <parameter type="collection">
-        <parameter key="baseClass">Task\SwagTask</parameter>
+        <parameter key="baseClass">SwagTask\SwagTask</parameter>
         <parameter key="name">SwagTask</parameter>
         <parameter key="active">false</parameter>
         <parameter key="path">custom/plugins/SwagTask/</parameter>
         <parameter key="version">1.0.0</parameter>
         <parameter key="autoload" type="collection">
           <parameter key="psr-4" type="collection">
-            <parameter key="Task\">src/</parameter>
+            <parameter key="SwagTask\">src/</parameter>
           </parameter>
         </parameter>
         <parameter key="managedByComposer">false</parameter>
-        <parameter key="composerName">task/swag-task</parameter>
+        <parameter key="composerName">swag-task/swag-task</parameter>
       </parameter>
       <parameter type="collection">
         <parameter key="baseClass">Swag\LanguagePack\SwagLanguagePack</parameter>

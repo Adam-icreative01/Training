@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Task\Core\Content\Extension;
+namespace SwagTask\Core\Content\Extension;
 
 use Shopware\Core\Content\Product\ProductDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityExtension;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
-use Task\Core\Content\Swag\SwagDefinition;
+use SwagTask\Core\Content\Swag\SwagTaskDefinition;
 
 class ProductExtension extends EntityExtension
 {
@@ -19,7 +19,7 @@ class ProductExtension extends EntityExtension
         $collection->add(
             (new OneToManyAssociationField(
                 'swag',
-                SwagDefinition::class,
+                SwagTaskDefinition::class,
                 'product_id'
             ))
         );

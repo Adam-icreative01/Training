@@ -9,4 +9,4 @@ $loader = (new TestBootstrapper())
     ->bootstrap()
     ->getClassLoader();
 
-$loader->addPsr4('Task\\Tests\\', __DIR__);
+$loader->addPsr4('SwagTask\\Tests\\', __DIR__);

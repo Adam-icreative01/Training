@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Task\Migration;
+namespace SwagTask\Migration;
 
 use Doctrine\DBAL\Connection;
 use Shopware\Core\Framework\Migration\MigrationStep;

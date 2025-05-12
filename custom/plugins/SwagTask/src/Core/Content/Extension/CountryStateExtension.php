@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Task\Core\Content\Extension;
+namespace SwagTask\Core\Content\Extension;
 
 use Shopware\Core\Framework\Plugin\Extension\LanguageExtension;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityExtension;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 use Shopware\Core\System\Country\Aggregate\CountryState\CountryStateDefinition;
-use Task\Core\Content\Swag\SwagDefinition;
+use SwagTask\Core\Content\Swag\SwagTaskDefinition;
 
 class CountryStateExtension extends EntityExtension
 {
@@ -20,7 +20,7 @@ class CountryStateExtension extends EntityExtension
         $collection->add(
             new OneToManyAssociationField(
                 'swag',
-                SwagDefinition::class,
+                SwagTaskDefinition::class,
                 'state_id'
             )
         );

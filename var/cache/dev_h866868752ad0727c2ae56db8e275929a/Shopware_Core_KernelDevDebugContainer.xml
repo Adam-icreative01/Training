@@ -31,7 +31,7 @@
       <parameter key="SwagLanguagePack">Swag\LanguagePack\SwagLanguagePack</parameter>
       <parameter key="SwagExtensionStore">SwagExtensionStore\SwagExtensionStore</parameter>
       <parameter key="SwagBasicExample">BasicExample\SwagBasicExample</parameter>
-      <parameter key="SwagTask">Task\SwagTask</parameter>
+      <parameter key="SwagTask">SwagTask\SwagTask</parameter>
       <parameter key="DbalKernelPluginLoader">Shopware\Core\Framework\Plugin\KernelPluginLoader\DbalKernelPluginLoader</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
@@ -109,7 +109,7 @@
       </parameter>
       <parameter key="SwagTask" type="collection">
         <parameter key="path">/var/www/html/practicetasksw66/custom/plugins/SwagTask//src</parameter>
-        <parameter key="namespace">Task</parameter>
+        <parameter key="namespace">SwagTask</parameter>
       </parameter>
       <parameter key="DbalKernelPluginLoader" type="collection">
         <parameter key="path">/var/www/html/practicetasksw66/vendor/shopware/core/Framework/Plugin/KernelPluginLoader</parameter>
@@ -140,10 +140,10 @@
         <parameter key="path">/var/www/html/practicetasksw66/custom/plugins/SwagBasicExample//src</parameter>
         <parameter key="class">BasicExample\SwagBasicExample</parameter>
       </parameter>
-      <parameter key="Task\SwagTask" type="collection">
+      <parameter key="SwagTask\SwagTask" type="collection">
         <parameter key="name">SwagTask</parameter>
         <parameter key="path">/var/www/html/practicetasksw66/custom/plugins/SwagTask//src</parameter>
-        <parameter key="class">Task\SwagTask</parameter>
+        <parameter key="class">SwagTask\SwagTask</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.plugin_infos" type="collection">
@@ -218,18 +218,18 @@
         <parameter key="composerName">basic-example/swag-basic-example</parameter>
       </parameter>
       <parameter type="collection">
-        <parameter key="baseClass">Task\SwagTask</parameter>
+        <parameter key="baseClass">SwagTask\SwagTask</parameter>
         <parameter key="name">SwagTask</parameter>
         <parameter key="active">true</parameter>
         <parameter key="path">custom/plugins/SwagTask/</parameter>
         <parameter key="version">1.0.0</parameter>
         <parameter key="autoload" type="collection">
           <parameter key="psr-4" type="collection">
-            <parameter key="Task\">src/</parameter>
+            <parameter key="SwagTask\">src/</parameter>
           </parameter>
         </parameter>
         <parameter key="managedByComposer">false</parameter>
-        <parameter key="composerName">task/swag-task</parameter>
+        <parameter key="composerName">swag-task/swag-task</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.supported_api_versions" type="collection">
@@ -8279,8 +8279,8 @@ The accessibility improvements will be standard as of v6.7.0</parameter>
         <argument key="theme_child">Shopware\Storefront\Theme\Aggregate\ThemeChildDefinition</argument>
         <argument key="swag_language_pack_language">Swag\LanguagePack\PackLanguage\PackLanguageDefinition</argument>
         <argument key="basic_example">BasicExample\Core\Content\BasicExample\BasicExampleDefinition</argument>
-        <argument key="swag">Task\Core\Content\Swag\SwagDefinition</argument>
-        <argument key="swag_translation">Task\Core\Content\Swag\Aggregate\TaskTranslationDefinition</argument>
+        <argument key="swag">SwagTask\Core\Content\Swag\SwagTaskDefinition</argument>
+        <argument key="swag_translation">SwagTask\Core\Content\Swag\Aggregate\SwagTaskTranslationDefinition</argument>
       </argument>
       <argument type="collection">
         <argument key="log_entry">log_entry.repository</argument>
@@ -10849,8 +10849,8 @@ The accessibility improvements will be standard as of v6.7.0</parameter>
         <argument key="theme_child">Shopware\Storefront\Theme\Aggregate\ThemeChildDefinition</argument>
         <argument key="swag_language_pack_language">Swag\LanguagePack\PackLanguage\PackLanguageDefinition</argument>
         <argument key="basic_example">BasicExample\Core\Content\BasicExample\BasicExampleDefinition</argument>
-        <argument key="swag">Task\Core\Content\Swag\SwagDefinition</argument>
-        <argument key="swag_translation">Task\Core\Content\Swag\Aggregate\TaskTranslationDefinition</argument>
+        <argument key="swag">SwagTask\Core\Content\Swag\SwagTaskDefinition</argument>
+        <argument key="swag_translation">SwagTask\Core\Content\Swag\Aggregate\SwagTaskTranslationDefinition</argument>
       </argument>
       <argument type="collection">
         <argument key="language">sales_channel.language.repository</argument>
@@ -17894,38 +17894,38 @@ The accessibility improvements will be standard as of v6.7.0</parameter>
       <argument type="service" id="shopware.filesystem.public"/>
       <argument>plugins/swag_basic_example</argument>
     </service>
-    <service id="Task\Core\Content\Swag\SwagDefinition" class="Task\Core\Content\Swag\SwagDefinition" public="true">
+    <service id="SwagTask\Core\Content\Swag\SwagTaskDefinition" class="SwagTask\Core\Content\Swag\SwagTaskDefinition" public="true">
       <tag name="shopware.entity.definition" entity="swag"/>
       <call method="compile">
         <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
       </call>
     </service>
-    <service id="Task\Core\Content\Swag\Aggregate\TaskTranslationDefinition" class="Task\Core\Content\Swag\Aggregate\TaskTranslationDefinition" public="true">
+    <service id="SwagTask\Core\Content\Swag\Aggregate\SwagTaskTranslationDefinition" class="SwagTask\Core\Content\Swag\Aggregate\SwagTaskTranslationDefinition" public="true">
       <tag name="shopware.entity.definition" entity="swag_translation"/>
       <call method="compile">
         <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
       </call>
     </service>
-    <service id="Task\Core\Content\Extension\CountryExtension" class="Task\Core\Content\Extension\CountryExtension">
+    <service id="SwagTask\Core\Content\Extension\CountryExtension" class="SwagTask\Core\Content\Extension\CountryExtension">
       <tag name="shopware.entity.extension"/>
     </service>
-    <service id="Task\Core\Content\Extension\CountryStateExtension" class="Task\Core\Content\Extension\CountryStateExtension">
+    <service id="SwagTask\Core\Content\Extension\CountryStateExtension" class="SwagTask\Core\Content\Extension\CountryStateExtension">
       <tag name="shopware.entity.extension"/>
     </service>
-    <service id="Task\Core\Content\Extension\MediaExtension" class="Task\Core\Content\Extension\MediaExtension">
+    <service id="SwagTask\Core\Content\Extension\MediaExtension" class="SwagTask\Core\Content\Extension\MediaExtension">
       <tag name="shopware.entity.extension"/>
     </service>
-    <service id="Task\Core\Content\Extension\ProductExtension" class="Task\Core\Content\Extension\ProductExtension">
+    <service id="SwagTask\Core\Content\Extension\ProductExtension" class="SwagTask\Core\Content\Extension\ProductExtension">
       <tag name="shopware.entity.extension"/>
     </service>
-    <service id="Task\Core\Content\Extension\LanguageExtension" class="Task\Core\Content\Extension\LanguageExtension">
+    <service id="SwagTask\Core\Content\Extension\LanguageExtension" class="SwagTask\Core\Content\Extension\LanguageExtension">
       <tag name="shopware.entity.extension"/>
     </service>
     <service id="Shopware\Core\Framework\Migration\MigrationSource_SwagTask" class="Shopware\Core\Framework\Migration\MigrationSource">
       <tag name="shopware.migration_source"/>
       <argument>SwagTask</argument>
       <argument type="collection">
-        <argument key="/var/www/html/practicetasksw66/custom/plugins/SwagTask//src/Migration">Task\Migration</argument>
+        <argument key="/var/www/html/practicetasksw66/custom/plugins/SwagTask//src/Migration">SwagTask\Migration</argument>
       </argument>
     </service>
     <service id="swag_task.filesystem.private" class="Shopware\Core\Framework\Adapter\Filesystem\PrefixFilesystem" public="true">
@@ -17948,8 +17948,8 @@ The accessibility improvements will be standard as of v6.7.0</parameter>
       <argument>BasicExample\SwagBasicExample</argument>
       <factory service="Shopware\Core\Framework\Plugin\KernelPluginLoader\KernelPluginLoader" method="getPluginInstance"/>
     </service>
-    <service id="Task\SwagTask" class="Task\SwagTask" public="true" autowire="true">
-      <argument>Task\SwagTask</argument>
+    <service id="SwagTask\SwagTask" class="SwagTask\SwagTask" public="true" autowire="true">
+      <argument>SwagTask\SwagTask</argument>
       <factory service="Shopware\Core\Framework\Plugin\KernelPluginLoader\KernelPluginLoader" method="getPluginInstance"/>
     </service>
     <service id="kernel" class="Shopware\Core\Kernel" public="true" synthetic="true" autoconfigure="true">
@@ -28322,7 +28322,7 @@ The accessibility improvements will be standard as of v6.7.0</parameter>
       <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Event\EntityLoadedEventFactory"/>
     </service>
     <service id="swag.repository" class="Shopware\Core\Framework\DataAbstractionLayer\EntityRepository" public="true">
-      <argument type="service" id="Task\Core\Content\Swag\SwagDefinition"/>
+      <argument type="service" id="SwagTask\Core\Content\Swag\SwagTaskDefinition"/>
       <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Read\EntityReaderInterface"/>
       <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\VersionManager"/>
       <argument type="service" id="Shopware\Elasticsearch\Framework\DataAbstractionLayer\ElasticsearchEntitySearcher"/>
@@ -28331,7 +28331,7 @@ The accessibility improvements will be standard as of v6.7.0</parameter>
       <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Event\EntityLoadedEventFactory"/>
     </service>
     <service id="swag_translation.repository" class="Shopware\Core\Framework\DataAbstractionLayer\EntityRepository" public="true">
-      <argument type="service" id="Task\Core\Content\Swag\Aggregate\TaskTranslationDefinition"/>
+      <argument type="service" id="SwagTask\Core\Content\Swag\Aggregate\SwagTaskTranslationDefinition"/>
       <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Read\EntityReaderInterface"/>
       <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\VersionManager"/>
       <argument type="service" id="Shopware\Elasticsearch\Framework\DataAbstractionLayer\ElasticsearchEntitySearcher"/>
@@ -29854,12 +29854,12 @@ The accessibility improvements will be standard as of v6.7.0</parameter>
         <argument type="service" id="Shopware\Core\System\SalesChannel\Entity\SalesChannelDefinitionInstanceRegistry"/>
       </call>
     </service>
-    <service id="sales_channel_definition.Task\Core\Content\Swag\SwagDefinition" class="Task\Core\Content\Swag\SwagDefinition" public="true">
+    <service id="sales_channel_definition.SwagTask\Core\Content\Swag\SwagTaskDefinition" class="SwagTask\Core\Content\Swag\SwagTaskDefinition" public="true">
       <call method="compile">
         <argument type="service" id="Shopware\Core\System\SalesChannel\Entity\SalesChannelDefinitionInstanceRegistry"/>
       </call>
     </service>
-    <service id="sales_channel_definition.Task\Core\Content\Swag\Aggregate\TaskTranslationDefinition" class="Task\Core\Content\Swag\Aggregate\TaskTranslationDefinition" public="true">
+    <service id="sales_channel_definition.SwagTask\Core\Content\Swag\Aggregate\SwagTaskTranslationDefinition" class="SwagTask\Core\Content\Swag\Aggregate\SwagTaskTranslationDefinition" public="true">
       <call method="compile">
         <argument type="service" id="Shopware\Core\System\SalesChannel\Entity\SalesChannelDefinitionInstanceRegistry"/>
       </call>

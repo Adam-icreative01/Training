@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg', 'embed'], true)) {
 }
 
 require dirname(__DIR__, 3).'/vendor/autoload.php';
-(require __DIR__.'/Shopware_Core_KernelDevDebugContainer.php')->set(\ContainerX52rxxE\Shopware_Core_KernelDevDebugContainer::class, null);
+(require __DIR__.'/Shopware_Core_KernelDevDebugContainer.php')->set(\ContainerEOOjx5S\Shopware_Core_KernelDevDebugContainer::class, null);
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -31,7 +31,7 @@ $classes[] = 'Shopware\Core\Service\Service';
 $classes[] = 'Swag\LanguagePack\SwagLanguagePack';
 $classes[] = 'SwagExtensionStore\SwagExtensionStore';
 $classes[] = 'BasicExample\SwagBasicExample';
-$classes[] = 'Task\SwagTask';
+$classes[] = 'SwagTask\SwagTask';
 $classes[] = 'Shopware\Core\Framework\Plugin\KernelPluginLoader\DbalKernelPluginLoader';
 $classes[] = 'GuzzleHttp\HandlerStack';
 $classes[] = 'Symfony\Component\Cache\Adapter\ArrayAdapter';
@@ -1772,6 +1772,13 @@ $classes[] = 'Shopware\Core\Framework\App\InAppPurchases\Payload\InAppPurchasesP
 $classes[] = 'SwagExtensionStore\Controller\LicenseController';
 $classes[] = 'SwagExtensionStore\Services\LicenseService';
 $classes[] = 'SwagExtensionStore\Services\StoreClient';
+$classes[] = 'SwagTask\Core\Content\Extension\CountryExtension';
+$classes[] = 'SwagTask\Core\Content\Extension\CountryStateExtension';
+$classes[] = 'SwagTask\Core\Content\Extension\LanguageExtension';
+$classes[] = 'SwagTask\Core\Content\Extension\MediaExtension';
+$classes[] = 'SwagTask\Core\Content\Extension\ProductExtension';
+$classes[] = 'SwagTask\Core\Content\Swag\Aggregate\SwagTaskTranslationDefinition';
+$classes[] = 'SwagTask\Core\Content\Swag\SwagTaskDefinition';
 $classes[] = 'Swag\LanguagePack\Core\Framework\DataAbstractionLayer\Write\Validation\SalesChannelDomainValidator';
 $classes[] = 'Swag\LanguagePack\Core\Framework\DataAbstractionLayer\Write\Validation\SalesChannelLanguageValidator';
 $classes[] = 'Swag\LanguagePack\Core\Framework\DataAbstractionLayer\Write\Validation\SalesChannelValidator';
@@ -1782,13 +1789,6 @@ $classes[] = 'Swag\LanguagePack\PackLanguage\PackLanguageDefinition';
 $classes[] = 'Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\RedirectController';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\TemplateController';
-$classes[] = 'Task\Core\Content\Extension\CountryExtension';
-$classes[] = 'Task\Core\Content\Extension\CountryStateExtension';
-$classes[] = 'Task\Core\Content\Extension\LanguageExtension';
-$classes[] = 'Task\Core\Content\Extension\MediaExtension';
-$classes[] = 'Task\Core\Content\Extension\ProductExtension';
-$classes[] = 'Task\Core\Content\Swag\Aggregate\TaskTranslationDefinition';
-$classes[] = 'Task\Core\Content\Swag\SwagDefinition';
 $classes[] = 'Shopware\Core\Framework\DataAbstractionLayer\EntityRepository';
 $classes[] = 'Shopware\Core\Framework\Adapter\Filesystem\PrefixFilesystem';
 $classes[] = 'Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestPayloadValueResolver';
@@ -2091,3 +2091,8 @@ $classes[] = 'Symfony\Component\VarDumper\Cloner\VarCloner';
 $classes[] = 'Symfony\Component\VarDumper\Dumper\HtmlDumper';
 
 $preloaded = Preloader::preload($classes);
+
+$classes = [];
+$classes[] = 'Symfony\\Component\\Routing\\Generator\\CompiledUrlGenerator';
+$classes[] = 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableCompiledUrlMatcher';
+$preloaded = Preloader::preload($classes, $preloaded);

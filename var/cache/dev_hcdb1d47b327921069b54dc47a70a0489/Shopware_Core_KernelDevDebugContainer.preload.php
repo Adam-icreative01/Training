@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg', 'embed'], true)) {
 }
 
 require dirname(__DIR__, 3).'/vendor/autoload.php';
-(require __DIR__.'/Shopware_Core_KernelDevDebugContainer.php')->set(\ContainerIaPAvlL\Shopware_Core_KernelDevDebugContainer::class, null);
+(require __DIR__.'/Shopware_Core_KernelDevDebugContainer.php')->set(\ContainerRA4i1Tr\Shopware_Core_KernelDevDebugContainer::class, null);
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -2083,3 +2083,8 @@ $classes[] = 'Symfony\Component\VarDumper\Cloner\VarCloner';
 $classes[] = 'Symfony\Component\VarDumper\Dumper\HtmlDumper';
 
 $preloaded = Preloader::preload($classes);
+
+$classes = [];
+$classes[] = 'Symfony\\Component\\Routing\\Generator\\CompiledUrlGenerator';
+$classes[] = 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableCompiledUrlMatcher';
+$preloaded = Preloader::preload($classes, $preloaded);

@@ -1,14 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Task\Core\Content\Extension;
+namespace SwagTask\Core\Content\Extension;
 
 use Shopware\Core\Content\Media\MediaDefinition;
-use Shopware\Core\Framework\Plugin\Extension\LanguageExtension;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityExtension;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToOneAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
-use Task\Core\Content\Swag\SwagDefinition;
+use SwagTask\Core\Content\Swag\SwagTaskDefinition;
 
 class MediaExtension extends EntityExtension
 {
@@ -24,7 +22,7 @@ class MediaExtension extends EntityExtension
                 'swag',
                 'id',
                 'media_id',
-                SwagDefinition::class,
+                SwagTaskDefinition::class,
                 false
             )
         );

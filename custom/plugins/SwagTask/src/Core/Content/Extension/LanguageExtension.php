@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Task\Core\Content\Extension;
+namespace SwagTask\Core\Content\Extension;
 
 use Shopware\Core\Framework\DataAbstractionLayer\EntityExtension;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 use Shopware\Core\System\Language\LanguageDefinition;
-use Task\Core\Content\Swag\Aggregate\TaskTranslationDefinition;
+use SwagTask\Core\Content\Swag\Aggregate\SwagTaskTranslationDefinition;
 
 class LanguageExtension extends EntityExtension
 {
@@ -20,7 +20,7 @@ class LanguageExtension extends EntityExtension
         $collection->add(
             (new OneToManyAssociationField(
                 'language',
-                TaskTranslationDefinition::class,
+                SwagTaskTranslationDefinition::class,
                 'language_id'
             ))
        );

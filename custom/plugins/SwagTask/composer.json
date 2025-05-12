@@ -1,6 +1,6 @@
 {
-    "name": "task/swag-task",
-    "description": "task/swag-task",
+    "name": "swag-task/swag-task",
+    "description": "SwagTask Plugin",
     "type": "shopware-platform-plugin",
     "version": "1.0.0",
     "license": "MIT",
@@ -8,7 +8,7 @@
         "shopware/core": "~6.6.0"
     },
     "extra": {
-        "shopware-plugin-class": "Task\\SwagTask",
+        "shopware-plugin-class": "SwagTask\\SwagTask",
         "label": {
             "de-DE": "Skeleton plugin",
             "en-GB": "Skeleton plugin"
@@ -16,12 +16,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Task\\": "src/"
+            "SwagTask\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Task\\Tests\\": "tests/"
+            "SwagTask\\Tests\\": "tests/"
         }
     }
 }
