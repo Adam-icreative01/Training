@@ -11,7 +11,29 @@
         </service>
 
         <service id="Task\Core\Content\Swag\Aggregate\TaskTranslationDefinition">
-            <tag name="shopware.entity.definition" entity="task_translation" />
+            <tag name="shopware.entity.definition" entity="swag_translation" />
+        </service>
+
+
+        <!-- Extensions -->
+        <service id="Task\Core\Content\Extension\CountryExtension">
+            <tag name="shopware.entity.extension" />
+        </service>
+
+        <service id="Task\Core\Content\Extension\CountryStateExtension">
+            <tag name="shopware.entity.extension" />
+        </service>
+
+        <service id="Task\Core\Content\Extension\MediaExtension">
+            <tag name="shopware.entity.extension" />
+        </service>
+
+        <service id="Task\Core\Content\Extension\ProductExtension">
+            <tag name="shopware.entity.extension" />
+        </service>
+
+        <service id="Task\Core\Content\Extension\LanguageExtension">
+            <tag name="shopware.entity.extension" />
         </service>
 
     </services>
