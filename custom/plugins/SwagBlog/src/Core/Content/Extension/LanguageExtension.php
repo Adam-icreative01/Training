@@ -7,6 +7,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 use Shopware\Core\System\Language\LanguageDefinition;
 use SwagBlog\Core\Content\Blog\Aggregate\BlogTranslationDefinition;
+use SwagBlog\Core\Content\BlogCategory\Aggregate\BlogCategoryTranslationDefinition;
 
 class LanguageExtension extends EntityExtension
 {
@@ -18,10 +19,18 @@ class LanguageExtension extends EntityExtension
     {
         $collection->add(
             (new OneToManyAssociationField(
-                'language',
+                'blogTranslations',
                 BlogTranslationDefinition::class,
                 'language_id',
-            ))
+            )),            
+        );
+
+        $collection->add(
+            (new OneToManyAssociationField(
+                'blogCategoryTranslations',
+                BlogCategoryTranslationDefinition::class,
+                'language_id',
+            )),            
         );
     }
 }

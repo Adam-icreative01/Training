@@ -7,6 +7,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\ApiAware;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\LongTextField;
 use SwagBlog\Core\Content\Blog\BlogDefinition;
 
 class BlogTranslationDefinition extends EntityTranslationDefinition
@@ -20,12 +21,12 @@ class BlogTranslationDefinition extends EntityTranslationDefinition
 
     // public function getEntityClass(): string
     // {
-    //     return SwagEntity::class;
+    //     return BlogTranslationEntity::class;
     // }
 
     // public function getCollectionClass(): string
     // {
-    //     return SwagCollection::class;
+    //     return BlogTranslationCollection::class;
     // }
 
     public function getParentDefinitionClass(): string
@@ -37,7 +38,7 @@ class BlogTranslationDefinition extends EntityTranslationDefinition
     {
         return new FieldCollection([
             (new StringField('name', 'name'))->addFlags( new ApiAware(), new Required()),
-            new StringField('description', 'description'),
+            new LongTextField('description', 'description'),
             (new StringField('author', 'author'))->addFlags( new Required()),                  
         ]);
     }

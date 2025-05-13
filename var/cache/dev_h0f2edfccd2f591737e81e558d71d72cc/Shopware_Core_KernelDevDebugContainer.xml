@@ -8306,8 +8306,9 @@ The accessibility improvements will be standard as of v6.7.0</parameter>
         <argument key="swag">SwagTask\Core\Content\Swag\SwagTaskDefinition</argument>
         <argument key="swag_translation">SwagTask\Core\Content\Swag\Aggregate\SwagTaskTranslationDefinition</argument>
         <argument key="blog">SwagBlog\Core\Content\Blog\BlogDefinition</argument>
-        <argument key="blog_category">SwagBlog\Core\Content\BlogCategory\BlogCategoryDefinition</argument>
         <argument key="blog_translation">SwagBlog\Core\Content\Blog\Aggregate\BlogTranslationDefinition</argument>
+        <argument key="blog_category">SwagBlog\Core\Content\BlogCategory\BlogCategoryDefinition</argument>
+        <argument key="blog_category_translation">SwagBlog\Core\Content\BlogCategory\Aggregate\BlogCategoryTranslationDefinition</argument>
         <argument key="blog_category_mapping">SwagBlog\Core\Content\BlogCategoryMappingDefinition</argument>
         <argument key="blog_product_mapping">SwagBlog\Core\Content\BlogProductMappingDefinition</argument>
       </argument>
@@ -8534,8 +8535,9 @@ The accessibility improvements will be standard as of v6.7.0</parameter>
         <argument key="swag">swag.repository</argument>
         <argument key="swag_translation">swag_translation.repository</argument>
         <argument key="blog">blog.repository</argument>
-        <argument key="blog_category">blog_category.repository</argument>
         <argument key="blog_translation">blog_translation.repository</argument>
+        <argument key="blog_category">blog_category.repository</argument>
+        <argument key="blog_category_translation">blog_category_translation.repository</argument>
         <argument key="blog_category_mapping">blog_category_mapping.repository</argument>
         <argument key="blog_product_mapping">blog_product_mapping.repository</argument>
       </argument>
@@ -10886,8 +10888,9 @@ The accessibility improvements will be standard as of v6.7.0</parameter>
         <argument key="swag">SwagTask\Core\Content\Swag\SwagTaskDefinition</argument>
         <argument key="swag_translation">SwagTask\Core\Content\Swag\Aggregate\SwagTaskTranslationDefinition</argument>
         <argument key="blog">SwagBlog\Core\Content\Blog\BlogDefinition</argument>
-        <argument key="blog_category">SwagBlog\Core\Content\BlogCategory\BlogCategoryDefinition</argument>
         <argument key="blog_translation">SwagBlog\Core\Content\Blog\Aggregate\BlogTranslationDefinition</argument>
+        <argument key="blog_category">SwagBlog\Core\Content\BlogCategory\BlogCategoryDefinition</argument>
+        <argument key="blog_category_translation">SwagBlog\Core\Content\BlogCategory\Aggregate\BlogCategoryTranslationDefinition</argument>
         <argument key="blog_category_mapping">SwagBlog\Core\Content\BlogCategoryMappingDefinition</argument>
         <argument key="blog_product_mapping">SwagBlog\Core\Content\BlogProductMappingDefinition</argument>
       </argument>
@@ -17981,14 +17984,20 @@ The accessibility improvements will be standard as of v6.7.0</parameter>
         <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
       </call>
     </service>
+    <service id="SwagBlog\Core\Content\Blog\Aggregate\BlogTranslationDefinition" class="SwagBlog\Core\Content\Blog\Aggregate\BlogTranslationDefinition" public="true">
+      <tag name="shopware.entity.definition" entity="blog_translation"/>
+      <call method="compile">
+        <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
+      </call>
+    </service>
     <service id="SwagBlog\Core\Content\BlogCategory\BlogCategoryDefinition" class="SwagBlog\Core\Content\BlogCategory\BlogCategoryDefinition" public="true">
       <tag name="shopware.entity.definition" entity="blog_category"/>
       <call method="compile">
         <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
       </call>
     </service>
-    <service id="SwagBlog\Core\Content\Blog\Aggregate\BlogTranslationDefinition" class="SwagBlog\Core\Content\Blog\Aggregate\BlogTranslationDefinition" public="true">
-      <tag name="shopware.entity.definition" entity="blog_translation"/>
+    <service id="SwagBlog\Core\Content\BlogCategory\Aggregate\BlogCategoryTranslationDefinition" class="SwagBlog\Core\Content\BlogCategory\Aggregate\BlogCategoryTranslationDefinition" public="true">
+      <tag name="shopware.entity.definition" entity="blog_category_translation"/>
       <call method="compile">
         <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
       </call>
@@ -28442,6 +28451,15 @@ The accessibility improvements will be standard as of v6.7.0</parameter>
       <argument type="service" id="debug.event_dispatcher"/>
       <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Event\EntityLoadedEventFactory"/>
     </service>
+    <service id="blog_translation.repository" class="Shopware\Core\Framework\DataAbstractionLayer\EntityRepository" public="true">
+      <argument type="service" id="SwagBlog\Core\Content\Blog\Aggregate\BlogTranslationDefinition"/>
+      <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Read\EntityReaderInterface"/>
+      <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\VersionManager"/>
+      <argument type="service" id="Shopware\Elasticsearch\Framework\DataAbstractionLayer\ElasticsearchEntitySearcher"/>
+      <argument type="service" id="Shopware\Elasticsearch\Framework\DataAbstractionLayer\ElasticsearchEntityAggregator"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Event\EntityLoadedEventFactory"/>
+    </service>
     <service id="blog_category.repository" class="Shopware\Core\Framework\DataAbstractionLayer\EntityRepository" public="true">
       <argument type="service" id="SwagBlog\Core\Content\BlogCategory\BlogCategoryDefinition"/>
       <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Read\EntityReaderInterface"/>
@@ -28451,8 +28469,8 @@ The accessibility improvements will be standard as of v6.7.0</parameter>
       <argument type="service" id="debug.event_dispatcher"/>
       <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Event\EntityLoadedEventFactory"/>
     </service>
-    <service id="blog_translation.repository" class="Shopware\Core\Framework\DataAbstractionLayer\EntityRepository" public="true">
-      <argument type="service" id="SwagBlog\Core\Content\Blog\Aggregate\BlogTranslationDefinition"/>
+    <service id="blog_category_translation.repository" class="Shopware\Core\Framework\DataAbstractionLayer\EntityRepository" public="true">
+      <argument type="service" id="SwagBlog\Core\Content\BlogCategory\Aggregate\BlogCategoryTranslationDefinition"/>
       <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Read\EntityReaderInterface"/>
       <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\VersionManager"/>
       <argument type="service" id="Shopware\Elasticsearch\Framework\DataAbstractionLayer\ElasticsearchEntitySearcher"/>
@@ -30008,12 +30026,17 @@ The accessibility improvements will be standard as of v6.7.0</parameter>
         <argument type="service" id="Shopware\Core\System\SalesChannel\Entity\SalesChannelDefinitionInstanceRegistry"/>
       </call>
     </service>
+    <service id="sales_channel_definition.SwagBlog\Core\Content\Blog\Aggregate\BlogTranslationDefinition" class="SwagBlog\Core\Content\Blog\Aggregate\BlogTranslationDefinition" public="true">
+      <call method="compile">
+        <argument type="service" id="Shopware\Core\System\SalesChannel\Entity\SalesChannelDefinitionInstanceRegistry"/>
+      </call>
+    </service>
     <service id="sales_channel_definition.SwagBlog\Core\Content\BlogCategory\BlogCategoryDefinition" class="SwagBlog\Core\Content\BlogCategory\BlogCategoryDefinition" public="true">
       <call method="compile">
         <argument type="service" id="Shopware\Core\System\SalesChannel\Entity\SalesChannelDefinitionInstanceRegistry"/>
       </call>
     </service>
-    <service id="sales_channel_definition.SwagBlog\Core\Content\Blog\Aggregate\BlogTranslationDefinition" class="SwagBlog\Core\Content\Blog\Aggregate\BlogTranslationDefinition" public="true">
+    <service id="sales_channel_definition.SwagBlog\Core\Content\BlogCategory\Aggregate\BlogCategoryTranslationDefinition" class="SwagBlog\Core\Content\BlogCategory\Aggregate\BlogCategoryTranslationDefinition" public="true">
       <call method="compile">
         <argument type="service" id="Shopware\Core\System\SalesChannel\Entity\SalesChannelDefinitionInstanceRegistry"/>
       </call>
@@ -32892,10 +32915,12 @@ The accessibility improvements will be standard as of v6.7.0</parameter>
     <service id="Shopware\Core\Framework\DataAbstractionLayer\EntityRepository $swagTranslationRepository" alias="swag_translation.repository"/>
     <service id=".Shopware\Core\Framework\DataAbstractionLayer\EntityRepository $blog.repository" alias="blog.repository"/>
     <service id="Shopware\Core\Framework\DataAbstractionLayer\EntityRepository $blogRepository" alias="blog.repository"/>
-    <service id=".Shopware\Core\Framework\DataAbstractionLayer\EntityRepository $blog_category.repository" alias="blog_category.repository"/>
-    <service id="Shopware\Core\Framework\DataAbstractionLayer\EntityRepository $blogCategoryRepository" alias="blog_category.repository"/>
     <service id=".Shopware\Core\Framework\DataAbstractionLayer\EntityRepository $blog_translation.repository" alias="blog_translation.repository"/>
     <service id="Shopware\Core\Framework\DataAbstractionLayer\EntityRepository $blogTranslationRepository" alias="blog_translation.repository"/>
+    <service id=".Shopware\Core\Framework\DataAbstractionLayer\EntityRepository $blog_category.repository" alias="blog_category.repository"/>
+    <service id="Shopware\Core\Framework\DataAbstractionLayer\EntityRepository $blogCategoryRepository" alias="blog_category.repository"/>
+    <service id=".Shopware\Core\Framework\DataAbstractionLayer\EntityRepository $blog_category_translation.repository" alias="blog_category_translation.repository"/>
+    <service id="Shopware\Core\Framework\DataAbstractionLayer\EntityRepository $blogCategoryTranslationRepository" alias="blog_category_translation.repository"/>
     <service id=".Shopware\Core\Framework\DataAbstractionLayer\EntityRepository $blog_category_mapping.repository" alias="blog_category_mapping.repository"/>
     <service id="Shopware\Core\Framework\DataAbstractionLayer\EntityRepository $blogCategoryMappingRepository" alias="blog_category_mapping.repository"/>
     <service id=".Shopware\Core\Framework\DataAbstractionLayer\EntityRepository $blog_product_mapping.repository" alias="blog_product_mapping.repository"/>

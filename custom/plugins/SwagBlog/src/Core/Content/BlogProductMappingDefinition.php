@@ -3,6 +3,9 @@
 namespace SwagBlog\Core\Content;
 
 use Shopware\Core\Content\Product\ProductDefinition;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\IdField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
@@ -31,6 +34,7 @@ class BlogProductMappingDefinition extends MappingEntityDefinition
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([
+            (new IdField('id', 'id'))->addFlags(new Required(), new PrimaryKey()),
             new FkField('blog_id', 'blogId', BlogDefinition::class),             
             new FkField('product_id', 'productId', ProductDefinition::class),
 

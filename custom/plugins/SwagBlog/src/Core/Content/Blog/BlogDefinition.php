@@ -29,15 +29,15 @@ class BlogDefinition extends EntityDefinition
         return self::ENTITY_NAME;
     }
 
-    public function getEntityClass(): string
-    {
-        return BlogEntity::class;
-    }
+    // public function getEntityClass(): string
+    // {
+    //     return BlogEntity::class;
+    // }
 
-    public function getCollectionClass(): string
-    {
-        return BlogCollection::class;
-    }
+    // public function getCollectionClass(): string
+    // {
+    //     return BlogCollection::class;
+    // }
 
     protected function defineFields(): FieldCollection
     {
@@ -48,7 +48,7 @@ class BlogDefinition extends EntityDefinition
             new DateTimeField('release_date', 'release_date'), 
 
             new ManyToManyAssociationField(
-                'categories',
+                'blogCategories',
                 BlogCategoryDefinition::class,
                 BlogCategoryMappingDefinition::class,
                 'blog_id',

@@ -22,8 +22,8 @@ class ProductExtension extends EntityExtension
                 'blogs',
                 BlogDefinition::class,
                 BlogProductMappingDefinition::class,
-                'blog_id',
                 'product_id',
+                'blog_id',
             ))
         );
     }

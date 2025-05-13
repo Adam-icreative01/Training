@@ -34,6 +34,7 @@ class BlogCategoryMappingDefinition extends MappingEntityDefinition
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([
+            (new IdField('id', 'id'))->addFlags(new Required(), new PrimaryKey()),
             new FkField('blog_id', 'blogId', BlogDefinition::class),             
             new FkField('blog_category_id', 'blogCategoryId', BlogCategoryDefinition::class),
 

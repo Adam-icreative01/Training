@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg', 'embed'], true)) {
 }
 
 require dirname(__DIR__, 3).'/vendor/autoload.php';
-(require __DIR__.'/Shopware_Core_KernelDevDebugContainer.php')->set(\Container5io4WI1\Shopware_Core_KernelDevDebugContainer::class, null);
+(require __DIR__.'/Shopware_Core_KernelDevDebugContainer.php')->set(\ContainerLmN534M\Shopware_Core_KernelDevDebugContainer::class, null);
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -1765,6 +1765,7 @@ $classes[] = 'Shopware\Storefront\Theme\ThemeService';
 $classes[] = 'Shopware\Storefront\Theme\Twig\ThemeNamespaceHierarchyBuilder';
 $classes[] = 'Shopware\Storefront\Theme\Twig\ThemeInheritanceBuilder';
 $classes[] = 'SwagBlog\Core\Content\BlogCategoryMappingDefinition';
+$classes[] = 'SwagBlog\Core\Content\BlogCategory\Aggregate\BlogCategoryTranslationDefinition';
 $classes[] = 'SwagBlog\Core\Content\BlogCategory\BlogCategoryDefinition';
 $classes[] = 'SwagBlog\Core\Content\BlogProductMappingDefinition';
 $classes[] = 'SwagBlog\Core\Content\Blog\Aggregate\BlogTranslationDefinition';
