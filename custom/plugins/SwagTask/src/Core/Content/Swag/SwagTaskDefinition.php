@@ -31,15 +31,15 @@ class SwagTaskDefinition extends EntityDefinition
         return self::ENTITY_NAME;
     }
 
-    // public function getEntityClass(): string
-    // {
-    //     return SwagEntity::class;
-    // }
+    public function getEntityClass(): string
+    {
+        return SwagEntity::class;
+    }
 
-    // public function getCollectionClass(): string
-    // {
-    //     return SwagCollection::class;
-    // }
+    public function getCollectionClass(): string
+    {
+        return SwagCollection::class;
+    }
 
     protected function defineFields(): FieldCollection
     {

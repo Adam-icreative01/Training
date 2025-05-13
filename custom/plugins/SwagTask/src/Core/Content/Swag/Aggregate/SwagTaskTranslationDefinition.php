@@ -19,15 +19,15 @@ class SwagTaskTranslationDefinition extends EntityTranslationDefinition
         return self::ENTITY_NAME;
     }
 
-    // public function getEntityClass(): string
-    // {
-    //     return SwagEntity::class;
-    // }
+    public function getEntityClass(): string
+    {
+        return SwagTranslationEntity::class;
+    }
 
-    // public function getCollectionClass(): string
-    // {
-    //     return SwagCollection::class;
-    // }
+    public function getCollectionClass(): string
+    {
+        return SwagTranslationCollection::class;
+    }
 
     public function getParentDefinitionClass(): string
     {
