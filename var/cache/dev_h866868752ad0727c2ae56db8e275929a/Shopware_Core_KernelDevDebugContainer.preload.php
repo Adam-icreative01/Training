@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg', 'embed'], true)) {
 }
 
 require dirname(__DIR__, 3).'/vendor/autoload.php';
-(require __DIR__.'/Shopware_Core_KernelDevDebugContainer.php')->set(\ContainerDGAQHFO\Shopware_Core_KernelDevDebugContainer::class, null);
+(require __DIR__.'/Shopware_Core_KernelDevDebugContainer.php')->set(\ContainerEOOjx5S\Shopware_Core_KernelDevDebugContainer::class, null);
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -1876,6 +1876,7 @@ $classes[] = 'Symfony\Component\Messenger\Middleware\TraceableMiddleware';
 $classes[] = 'Symfony\Component\Messenger\MessageBus';
 $classes[] = 'Symfony\Component\Messenger\EventListener\AddErrorDetailsStampListener';
 $classes[] = 'Symfony\Component\Messenger\EventListener\SendFailedMessageToFailureTransportListener';
+$classes[] = 'Symfony\Component\Messenger\EventListener\DispatchPcntlSignalListener';
 $classes[] = 'Symfony\Component\Messenger\EventListener\StopWorkerOnRestartSignalListener';
 $classes[] = 'Symfony\Component\Messenger\EventListener\StopWorkerOnCustomStopExceptionListener';
 $classes[] = 'Symfony\Component\Messenger\Middleware\DispatchAfterCurrentBusMiddleware';
