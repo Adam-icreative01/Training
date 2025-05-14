@@ -1,0 +1,8 @@
+{
+    "swag-blog" : {
+        "general" : {
+            "mainMenuItemGeneral" : "Blog",
+            "descriptionTextModule" : "Blog-Management"
+        }
+    }
+}
