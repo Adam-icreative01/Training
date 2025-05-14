@@ -18020,6 +18020,13 @@ The accessibility improvements will be standard as of v6.7.0</parameter>
     <service id="SwagBlog\Core\Content\Extension\LanguageExtension" class="SwagBlog\Core\Content\Extension\LanguageExtension">
       <tag name="shopware.entity.extension"/>
     </service>
+    <service id="Shopware\Core\Framework\Migration\MigrationSource_SwagBlog" class="Shopware\Core\Framework\Migration\MigrationSource">
+      <tag name="shopware.migration_source"/>
+      <argument>SwagBlog</argument>
+      <argument type="collection">
+        <argument key="/var/www/html/practicetasksw66/custom/plugins/SwagBlog//src/Migration">SwagBlog\Migration</argument>
+      </argument>
+    </service>
     <service id="swag_blog.filesystem.private" class="Shopware\Core\Framework\Adapter\Filesystem\PrefixFilesystem" public="true">
       <argument type="service" id="shopware.filesystem.private"/>
       <argument>plugins/swag_blog</argument>

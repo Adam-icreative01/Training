@@ -4,8 +4,9 @@ namespace SwagBlog\Core\Content\Blog;
 
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityCollection;
+use SwagBlog\Core\Content\BlogCategory\BlogCategoryCollection;
 use Shopware\Core\Content\Product\ProductCollection;
+use SwagBlog\Core\Content\Blog\Aggregate\BlogTranslationCollection;
 
 class BlogEntity extends Entity
 {
@@ -32,9 +33,9 @@ class BlogEntity extends Entity
     protected $release_date;
 
     /**
-     * @var EntityCollection|null
+     * @var BlogCategoryCollection|null
      */
-    protected $categories;
+    protected $blogCategories;
 
     /**
      * @var ProductCollection|null
@@ -52,7 +53,7 @@ class BlogEntity extends Entity
     protected $active;
 
     /**
-     * @var EntityCollection
+     * @var BlogTranslationCollection
      */
     protected $translations;
 
@@ -111,14 +112,14 @@ class BlogEntity extends Entity
         $this->release_date = $release_date;
     }
 
-    public function getCategories(): ?EntityCollection
+    public function getBlogCategories(): ?BlogCategoryCollection
     {
-        return $this->categories;
+        return $this->blogCategories;
     }
 
-    public function setCategories(?EntityCollection $categories): void
+    public function setBlogCategories(?BlogCategoryCollection $blogCategories): void
     {
-        $this->categories = $categories;
+        $this->blogCategories = $blogCategories;
     }
 
     public function getProducts(): ?ProductCollection
@@ -151,12 +152,12 @@ class BlogEntity extends Entity
         $this->active = $active;
     }
 
-    public function getTranslations(): EntityCollection
+    public function getTranslations(): BlogTranslationCollection
     {
         return $this->translations;
     }
 
-    public function setTranslations(EntityCollection $translations): void
+    public function setTranslations(BlogTranslationCollection $translations): void
     {
         $this->translations = $translations;
     }

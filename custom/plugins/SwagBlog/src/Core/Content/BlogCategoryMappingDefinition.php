@@ -23,20 +23,21 @@ class BlogCategoryMappingDefinition extends MappingEntityDefinition
 
     // public function getEntityClass(): string
     // {
-    //     return SwagEntity::class;
+    //     return BlogCategoryMappingEntity::class;
     // }
 
     // public function getCollectionClass(): string
     // {
-    //     return SwagCollection::class;
+    //     return BlogCategoryMappingCollection::class;
     // }
 
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([
-            (new IdField('id', 'id'))->addFlags(new Required(), new PrimaryKey()),
-            new FkField('blog_id', 'blogId', BlogDefinition::class),             
-            new FkField('blog_category_id', 'blogCategoryId', BlogCategoryDefinition::class),
+            (new FkField('blog_id', 'blogId', BlogDefinition::class))
+            ->addFlags(new Required(), new PrimaryKey()),             
+            (new FkField('blog_category_id', 'blogCategoryId', BlogCategoryDefinition::class))
+            ->addFlags(new Required(), new PrimaryKey()),
 
             new ManyToOneAssociationField(
                 'blog',

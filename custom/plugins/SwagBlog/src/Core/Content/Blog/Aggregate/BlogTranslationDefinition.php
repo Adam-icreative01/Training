@@ -3,6 +3,7 @@
 namespace SwagBlog\Core\Content\Blog\Aggregate;
 
 use Shopware\Core\Framework\DataAbstractionLayer\EntityTranslationDefinition;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\AllowHtml;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\ApiAware;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
@@ -19,15 +20,15 @@ class BlogTranslationDefinition extends EntityTranslationDefinition
         return self::ENTITY_NAME;
     }
 
-    // public function getEntityClass(): string
-    // {
-    //     return BlogTranslationEntity::class;
-    // }
+    public function getEntityClass(): string
+    {
+        return BlogTranslationEntity::class;
+    }
 
-    // public function getCollectionClass(): string
-    // {
-    //     return BlogTranslationCollection::class;
-    // }
+    public function getCollectionClass(): string
+    {
+        return BlogTranslationCollection::class;
+    }
 
     public function getParentDefinitionClass(): string
     {
@@ -38,7 +39,7 @@ class BlogTranslationDefinition extends EntityTranslationDefinition
     {
         return new FieldCollection([
             (new StringField('name', 'name'))->addFlags( new ApiAware(), new Required()),
-            new LongTextField('description', 'description'),
+            (new LongTextField('description', 'description'))->addFlags(new AllowHtml()),
             (new StringField('author', 'author'))->addFlags( new Required()),                  
         ]);
     }

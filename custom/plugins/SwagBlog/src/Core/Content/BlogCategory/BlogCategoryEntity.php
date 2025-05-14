@@ -4,7 +4,8 @@ namespace SwagBlog\Core\Content\BlogCategory;
 
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityCollection;
+use SwagBlog\Core\Content\BlogCategory\Aggregate\BlogCategoryTranslationCollection;
+use SwagBlog\Core\Content\Blog\BlogCollection;
 
 class BlogCategoryEntity extends Entity
 {
@@ -21,7 +22,12 @@ class BlogCategoryEntity extends Entity
     protected $name;
 
     /**
-     * @var EntityCollection|null
+     * @var BlogCategoryTranslationCollection
+     */
+    protected $translations;
+
+    /**
+     * @var BlogCollection|null
      */
     protected $blogs;
 
@@ -34,6 +40,11 @@ class BlogCategoryEntity extends Entity
      * @var \DateTimeInterface|null
      */
     protected $updatedAt;
+
+    /**
+     * @var array|null
+     */
+    protected $translated;
 
     public function getId(): string
     {
@@ -55,12 +66,22 @@ class BlogCategoryEntity extends Entity
         $this->name = $name;
     }
 
-    public function getBlogs(): ?EntityCollection
+    public function getTranslations(): BlogCategoryTranslationCollection
+    {
+        return $this->translations;
+    }
+
+    public function setTranslations(BlogCategoryTranslationCollection $translations): void
+    {
+        $this->translations = $translations;
+    }
+
+    public function getBlogs(): ?BlogCollection
     {
         return $this->blogs;
     }
 
-    public function setBlogs(?EntityCollection $blogs): void
+    public function setBlogs(?BlogCollection $blogs): void
     {
         $this->blogs = $blogs;
     }
@@ -83,5 +104,15 @@ class BlogCategoryEntity extends Entity
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    public function getTranslated(): array
+    {
+        return $this->translated;
+    }
+
+    public function setTranslated(?array $translated): void
+    {
+        $this->translated = $translated;
     }
 }
