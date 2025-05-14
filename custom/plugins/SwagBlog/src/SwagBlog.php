@@ -8,7 +8,7 @@ use Shopware\Core\Framework\Plugin\Context\DeactivateContext;
 use Shopware\Core\Framework\Plugin\Context\InstallContext;
 use Shopware\Core\Framework\Plugin\Context\UninstallContext;
 use Shopware\Core\Framework\Plugin\Context\UpdateContext;
-
+use Doctrine\DBAL\Connection;
 class SwagBlog extends Plugin
 {
     public function install(InstallContext $installContext): void
@@ -24,6 +24,14 @@ class SwagBlog extends Plugin
             return;
         }
 
+        $connection = $this->container->get(Connection::class);
+
+        $connection->executeStatement('DROP TABLE IF EXISTS `blog_category_mapping`');
+        $connection->executeStatement('DROP TABLE IF EXISTS `blog_product_mapping`');
+        $connection->executeStatement('DROP TABLE IF EXISTS `blog_translation`');
+        $connection->executeStatement('DROP TABLE IF EXISTS `blog`');
+        $connection->executeStatement('DROP TABLE IF EXISTS `blog_category_translation`'); 
+        $connection->executeStatement('DROP TABLE IF EXISTS `blog_category`');
         // Remove or deactivate the data created by the plugin
     }
 

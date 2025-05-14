@@ -16,7 +16,7 @@ if (!\class_exists(Shopware_Core_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerZMvCx0w\Shopware_Core_KernelDevDebugContainer([
     'container.build_hash' => 'ZMvCx0w',
-    'container.build_id' => 'f8f55795',
-    'container.build_time' => 1747202807,
+    'container.build_id' => '3def1d59',
+    'container.build_time' => 1747212786,
     'container.runtime_mode' => \in_array(\PHP_SAPI, ['cli', 'phpdbg', 'embed'], true) ? 'web=0' : 'web=1',
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerZMvCx0w');
