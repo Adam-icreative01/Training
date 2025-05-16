@@ -1,8 +1,16 @@
 {
     "swag-example": {
         "general": {
-            "mainMenuItemGeneral": "My custom module",
-            "descriptionTextModule": "Manage this custom module here"
+            "mainMenuItemGeneral": "Blog",
+            "descriptionTextModule": "Hello World"
+        },
+
+        "list" : {
+            "swagExampleList": "Blog List",
+            "addButtonText" : "Add Blog",
+            "columnName" : "Name",
+            "columnDiscount" : "Discount",
+            "columnDiscountType" : "Discount Type"
         }
     }
 }

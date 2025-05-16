@@ -5,7 +5,7 @@ import './page/swag-example-create';
 import deDE from './snippet/de-DE';
 import enGB from './snippet/en-GB';
 
-Shopware.Module.register('swag-example', {
+Shopware.Module.register('swag-basic-example', {
     type: 'plugin',
     name: 'Example',
     title: 'swag-example.general.mainMenuItemGeneral',
@@ -44,6 +44,7 @@ Shopware.Module.register('swag-example', {
         color: '#ff3d58',
         path: 'swag.example.list',
         icon: 'default-shopping-paper-bag-product',
+        // parent: 'sw-catalog',
         position: 100
     }]
 });

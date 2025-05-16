@@ -233,35 +233,16 @@
             "styleFiles": []
         }
     },
-    "SwagBasicExample": {
-        "basePath": "custom\/plugins\/SwagBasicExample\/\/src\/",
+    "SwagBlog": {
+        "basePath": "custom\/plugins\/SwagBlog\/\/src\/",
         "views": [
             "Resources\/views"
         ],
-        "technicalName": "swag-basic-example",
+        "technicalName": "swag-blog",
         "isTheme": false,
         "administration": {
             "path": "Resources\/app\/administration\/src",
             "entryFilePath": "Resources\/app\/administration\/src\/main.js",
-            "webpack": null
-        },
-        "storefront": {
-            "path": "Resources\/app\/storefront\/src",
-            "entryFilePath": "Resources\/app\/storefront\/src\/main.js",
-            "webpack": null,
-            "styleFiles": []
-        }
-    },
-    "SwagTask": {
-        "basePath": "custom\/plugins\/SwagTask\/\/src\/",
-        "views": [
-            "Resources\/views"
-        ],
-        "technicalName": "swag-task",
-        "isTheme": false,
-        "administration": {
-            "path": "Resources\/app\/administration\/src",
-            "entryFilePath": null,
             "webpack": null
         },
         "storefront": {

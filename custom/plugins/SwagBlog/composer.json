@@ -30,5 +30,16 @@
         "psr-4": {
             "SwagBlog\\Tests\\": "tests/"
         }
+    },
+
+    "shopware-app-admin-entrypoints": {
+        "js": [
+            "Resources/app/administration/src/main.js"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/runtime": true
+        }
     }
 }

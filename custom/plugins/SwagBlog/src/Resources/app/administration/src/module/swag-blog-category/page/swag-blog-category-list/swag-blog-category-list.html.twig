@@ -1,0 +1,22 @@
+{% block swag_blog_category_list %}
+    {% block swag_blog_category_list_smart_bar_actions %}
+        {# <template #smart-bar-actions>
+            <sw-button variant="primary" :routerLink="{ name: 'swag.blog.category.create' }">
+                {{ $tc('swag.blog.category.list.addButtonText')}}                
+            </sw-button>
+        </template> #}
+    {% endblock %}
+
+    <template #content>
+        {# {% block swag_blog_category_list_content %}
+            <sw-entity-listing 
+            v-if="blog_category"
+            :items="blog_category"
+            :repository="repository"
+            :showSelection="false"
+            :columns="columns"
+            detailRoute="swag.blog.category.detail">
+            </sw-entity-listing>
+        {% endblock %} #}
+    </template>
+{% endblock %} 
